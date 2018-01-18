@@ -1,6 +1,5 @@
 let timerValue = 0;
 let isTimerRunning = false;
-let pastTimes = [];
 let interval;
 let timerStartedAt;
 let prevTime = 0;
@@ -9,27 +8,37 @@ const startStopButtonId = "startStopButton";
 const resetButtonId = "resetButton";
 const recordTimeButtonId = "recordTimeButton";
 const timerValueId = "timerValue";
+const pastTimesId = "pastTimes";
 
 const domElements = {};
 
+function setup() {
+  domElements.startStopButton = document.getElementById(startStopButtonId);
+  
+  domElements.resetButton = document.getElementById(resetButtonId);
+  
+  domElements.recordTimeButton = document.getElementById(recordTimeButtonId);
+  
+  domElements.timerValue = document.getElementById(timerValueId);
+  
+  domElements.pastTimes = document.getElementById(pastTimesId);
+}
+
 function initListeners() {
-  const startStopButton = document.getElementById(startStopButtonId);
-  startStopButton.addEventListener("click", function() {
+  setup();
+  
+  domElements.startStopButton.addEventListener("click", function() {
     switchTimerState();
   });
-  domElements.startStopButton = startStopButton;
   
-  const resetButton = document.getElementById(resetButtonId);
-  resetButton.addEventListener("click", function() {
+  domElements.resetButton.addEventListener("click", function() {
     resetTimer();
-  });
-  domElements.resetButton = resetButton;
-  
-  const recordButton = document.getElementById(recordTimeButtonId);
-  recordButton.addEventListener("click", function() {
+  });  
+
+  domElements.recordTimeButton.addEventListener("click", function() {
     recordTime();
   });
-  domElements.recordTimeButton = recordButton;
+  
 }
 
 const TIMER_INTERVAL = 100;
@@ -46,8 +55,11 @@ function switchTimerState() {
 }
 
 function recordTime() {
-  // TODO
-  console.log(timerValue);
+  const span = document.createElement("span");
+  const text = document.createTextNode(timerValue);
+  span.appendChild(text);
+  
+  domElements.pastTimes.appendChild(span);
 }
 
 function repeatedFunction() {
@@ -60,11 +72,6 @@ function repeatedFunction() {
   
   if (prevTime > 0) {
     timerValue += prevTime;
-  }
-  
-  // lazy init timerValue inside domElements
-  if (!domElements.timerValue) {
-    domElements.timerValue = document.getElementById(timerValueId);
   }
   
   domElements.timerValue.innerHTML = timerValue.toFixed(2);
@@ -87,6 +94,7 @@ function resetTimer() {
   prevTime = 0;
   timerStartedAt = null;
   domElements.timerValue.innerHTML = timerValue;
+  domElements.pastTimes.innerHTML = "";
 }
 
 initListeners();
