@@ -1,4 +1,4 @@
-# [To the demo...](./as1.html)
+# [To the demo...](https://niktekusho.github.io/apjs-assignments/assignment1/as1.html)
 
 # Advanced Programming with JavaScript - Assignment 1
 
