@@ -1,52 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <script src="library.js"></script> 
-    <title>Product Catalog</title>
-  </head>
-  <body>
-    <div>
-      <h3>Search Product by Id</h3>
+
+<head>
+  <meta charset="utf-8">
+  <script src="library.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Product Catalog</title>
+</head>
+
+<body>
+  <h1>Product Catalog</h1>
+  <div class="searchContainer">
+    <h3>Search Product by Id</h3>
+    <div class="inputContainer">
       <input id="inputID" />
       <button id="inputIDButton">Search Product</button>
     </div>
-    <div>
-      <h3>Search Product by Type</h3>
+  </div>
+  <div class="searchContainer">
+    <h3>Search Product by Type</h3>
+    <div class="inputContainer">
       <input id="inputType" />
       <button id="inputTypeButton">Search Type</button>
     </div>
-    <div>
-      <h3>Search Product by Price</h3>
+  </div>
+  <div class="searchContainer">
+    <h3>Search Product by Price</h3>
+    <div class="inputContainer">
       <input id="inputPrice" />
       <button id="inputPriceButton">Search Price</button>
     </div>
-    <div>
+  </div>
+  <div>
+    <div class="productDetail">
       <h3>Examined Product</h3>
-      <p id="productText">
-        Product Id: <br />Price: <br  />Type:
-      </p>
-      <h3>List of Similar Products</h3>
-      <table id="similarTable" width="300px" border="1">
-        <tr>
-        </tr>
+      <div class="productText">
+        <span class="productDetailLabel">Product Id: </span>
+        <span class="productDetailText" id="productID"></span>
+      </div>
+      <div class="productText">
+        <span class="productDetailLabel">Price: </span>
+        <span class="productDetailText" id="productPrice"></span>
+      </div>
+      <div class="productText">
+        <span class="productDetailLabel">Type: </span>
+        <span class="productDetailText" id="productType"></span>
+      </div>
+    </div>
+    <h3>List of Similar Products</h3>
+    <table id="similarTable">
+      <thead>
         <th>ProductId</th>
         <th>Type</th>
         <th>Price</th>
         <th>Examine</th>
-      </table>
-    </div>
-    <div>
-      <h3>List of All Products</h3>
-      <table id="allTable" width="300px" border="1">
-        <tr>
-          <th>ProductId</th>
-          <th>Type</th>
-          <th>Price</th>
-          <th>Examine</th>
-        </tr>
-      </table>
-    </div>
-    <script src="productCatalog.js"></script>
-  </body>
+      </thead>
+    </table>
+  </div>
+  <div>
+    <h3>List of All Products</h3>
+    <table id="allTable">
+      <thead>
+        <th>ProductId</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Examine</th>
+      </thead>
+    </table>
+  </div>
+  <script src="productCatalog.js"></script>
+</body>
+
 </html>
