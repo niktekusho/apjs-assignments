@@ -74,9 +74,9 @@ function updateTable(tableId, productArray) {
 }
 
 function updateExaminedText(product) {
-  document.getElementById(spanProductID).textContent = product.id;
-  document.getElementById(spanProductPrice).textContent = product.price;
-  document.getElementById(spanProductType).textContent = product.type;
+  document.getElementById(spanProductID).textContent = product == null ? "" : product.id;
+  document.getElementById(spanProductPrice).textContent = product == null ? "" : product.price;
+  document.getElementById(spanProductType).textContent = product == null ? "" : product.type;
 }
 
 function getIntersection(array1, array2, searchedId) {
@@ -105,6 +105,7 @@ function processSearch(searchId) {
 
 function processSearchByType(searchType) {
   api.searchProductsByType(searchType).then((products) => {
+    updateExaminedText(null);
     updateTable(similarProductsTable, products);
   }).catch(error => alert(error));
 }
@@ -112,6 +113,7 @@ function processSearchByType(searchType) {
 function processSearchByPrice(searchPrice) {
   const priceDifference = 50;
   api.searchProductsByPrice(searchPrice, priceDifference).then((products) => {
+    updateExaminedText(null);
     updateTable(similarProductsTable, products);
   }).catch(error => alert(error));
 }
