@@ -19,7 +19,7 @@ Text Analytics API Keys:
 
 7e3029df2246402ebd81c3b480eb813b
 
-![Assignment demo][https://prod-edxapp.edx-cdn.org/assets/courseware/v1/47ec1354bad33287874cbe5f2617d0bb/asset-v1:Microsoft+DEV234x+1T2018+type@asset+block/face_full_demo.gif]
+![Assignment demo](https://prod-edxapp.edx-cdn.org/assets/courseware/v1/47ec1354bad33287874cbe5f2617d0bb/asset-v1:Microsoft+DEV234x+1T2018+type@asset+block/face_full_demo.gif)
 
 The user should see the following:
 1.  An application title
