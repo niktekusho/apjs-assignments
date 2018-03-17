@@ -1,3 +1,13 @@
+// CONSTANTS
+const productsById = "inputIDButton";
+const productsByType = "inputTypeButton";
+const productsByPrice = "inputPriceButton";
+const similarProductsTable = "similarTable";
+
+const inputID = "inputID";
+const inputType = "inputType";
+const inputPrice = "inputPrice";
+
 function createTableHeader(tableId) {
   const tableHeaderRow = document.createElement('tr');
   
@@ -85,12 +95,49 @@ function processSearch(searchId) {
   }).then((products) => {
     const similarArray = getIntersection(products[0], products[1], products[2].id);
     updateExaminedText(products[2]);
-    updateTable('similarTable', similarArray);
+    updateTable(similarProductsTable, similarArray);
   }).catch(err => alert(err));
 }
 
-document.getElementById('inputButton').addEventListener('click', function() {
-  processSearch(document.getElementById('input').value);
+function processSearchByType(searchType) {
+  api.searchProductsByType(searchType).then((products) => {
+    updateTable(similarProductsTable, products);
+  }).catch(error => alert(error));
+}
+
+function processSearchByPrice(searchPrice) {
+  const priceDifference = 50;
+  api.searchProductsByPrice(searchPrice, priceDifference).then((products) => {
+    updateTable(similarProductsTable, products);
+  }).catch(error => alert(error));
+}
+
+function clearInputs(inputs) {
+  if (inputs == null) {
+    return;
+  }
+  if (Array.isArray(inputs)) {
+    inputs.forEach((input) => {
+      document.getElementById(input).value = "";
+    })
+  } else {
+    document.getElementById(inputs).value = "";
+  }
+}
+
+document.getElementById(productsById).addEventListener('click', function() {
+  processSearch(document.getElementById(inputID).value);
+  clearInputs([inputPrice, inputType]);
+});
+
+document.getElementById(productsByType).addEventListener('click', function()  {
+  processSearchByType(document.getElementById(inputType).value);
+  clearInputs([inputPrice, inputID]);
+});
+
+document.getElementById(productsByPrice).addEventListener('click', function()  {
+  processSearchByPrice(document.getElementById(inputPrice).value);
+  clearInputs([inputID, inputType]);
 });
 
 api.searchAllProducts().then(value => updateTable('allTable', value));
