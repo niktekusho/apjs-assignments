@@ -50,9 +50,10 @@ function updateTable(tableId, productArray) {
     const td1 = document.createElement('td');
     const td2 = document.createElement('td');
     const td3 = document.createElement('td');
-    const td4 = document.createElement('button');
+    const td4 = document.createElement('td');
     
-    td4.addEventListener('click', function() {
+    const button = td4.appendChild(document.createElement('button'));
+    button.addEventListener('click', function() {
       processSearch(this.parentNode.firstChild.innerHTML);
       scrollTop();
     });
@@ -62,7 +63,7 @@ function updateTable(tableId, productArray) {
     td1.appendChild(document.createTextNode(obj.id));
     td2.appendChild(document.createTextNode(obj.type));
     td3.appendChild(document.createTextNode(obj.price));
-    td4.appendChild(document.createTextNode("Examine"));
+    button.textContent = "Examine";
     
     tr.appendChild(td1);
     tr.appendChild(td2);
