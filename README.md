@@ -5,5 +5,6 @@ This repository stores the assignments given in the edx course __Advanced Progra
 # List of Content
 
 -   [Assignment 1: web timer](./assignment1)
+-   [Assignment 2: product catalog](./assignment2)
 
 
