@@ -2,6 +2,7 @@
 
     function myLibrary(){
 
+        const timeoutTime = 100;
         //execute code here
         const catalog = createRandomCatalog(100);
 
@@ -39,7 +40,7 @@
 
         function searchAllProducts() {
           const promise = new Promise((resolve, reject) => {
-            setTimeout(() => resolve(catalog), 1000);
+            setTimeout(() => resolve(catalog), timeoutTime);
           });
           return promise;
         }
@@ -60,7 +61,7 @@
                 i++;
               }
               reject(`Invalid ID: ${id}`);
-            }, 1000);
+            }, timeoutTime);
           });
           return promise;
         }
@@ -86,7 +87,7 @@
                   i++;
                 }
                 resolve(typeArray);
-              }, 1000);
+              }, timeoutTime);
             }
           });
           return promise;
@@ -112,7 +113,7 @@
                   i++;
                 }
                 resolve(priceArray);
-              }, 1000);
+              }, timeoutTime);
             }
           });
           return promise;

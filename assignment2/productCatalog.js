@@ -1,12 +1,16 @@
 // CONSTANTS
-const productsById = "inputIDButton";
-const productsByType = "inputTypeButton";
-const productsByPrice = "inputPriceButton";
+const buttonProductsById = "inputIDButton";
+const buttonProductsByType = "inputTypeButton";
+const buttonProductsByPrice = "inputPriceButton";
 const similarProductsTable = "similarTable";
 
 const inputID = "inputID";
 const inputType = "inputType";
 const inputPrice = "inputPrice";
+
+const spanProductID = "productID";
+const spanProductPrice = "productPrice";
+const spanProductType = "productType";
 
 function createTableHeader(tableId) {
   const tableHeaderRow = document.createElement('tr');
@@ -50,6 +54,7 @@ function updateTable(tableId, productArray) {
     
     td4.addEventListener('click', function() {
       processSearch(this.parentNode.firstChild.innerHTML);
+      scrollTop();
     });
     
     const obj = productArray[i];
@@ -69,10 +74,9 @@ function updateTable(tableId, productArray) {
 }
 
 function updateExaminedText(product) {
-  let outputString = `Product Id: ${product.id}`;
-  outputString += `<br> Price: ${product.price}`;
-  outputString += `<br> Type: ${product.type}`;
-  document.getElementById('productText').innerHTML = outputString;
+  document.getElementById(spanProductID).textContent = product.id;
+  document.getElementById(spanProductPrice).textContent = product.price;
+  document.getElementById(spanProductType).textContent = product.type;
 }
 
 function getIntersection(array1, array2, searchedId) {
@@ -113,6 +117,7 @@ function processSearchByPrice(searchPrice) {
 }
 
 function clearInputs(inputs) {
+  // check for both null and undefined
   if (inputs == null) {
     return;
   }
@@ -125,17 +130,21 @@ function clearInputs(inputs) {
   }
 }
 
-document.getElementById(productsById).addEventListener('click', function() {
+function scrollTop() {
+  window.scrollTo(0, 0);
+}
+
+document.getElementById(buttonProductsById).addEventListener('click', function() {
   processSearch(document.getElementById(inputID).value);
   clearInputs([inputPrice, inputType]);
 });
 
-document.getElementById(productsByType).addEventListener('click', function()  {
+document.getElementById(buttonProductsByType).addEventListener('click', function()  {
   processSearchByType(document.getElementById(inputType).value);
   clearInputs([inputPrice, inputID]);
 });
 
-document.getElementById(productsByPrice).addEventListener('click', function()  {
+document.getElementById(buttonProductsByPrice).addEventListener('click', function()  {
   processSearchByPrice(document.getElementById(inputPrice).value);
   clearInputs([inputID, inputType]);
 });
