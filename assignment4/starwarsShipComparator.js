@@ -28,21 +28,23 @@ function* fetchShipData() {
 function populateRow(rowId, ship1Data, ship2Data, property, win) {
     const row = loadNode(rowId);
 
-    const ship1PropertyValue = ship1Data[property];
-    const ship2ProperyValue = ship2Data[property];
+    let ship1PropertyValue = ship1Data[property];
+    let ship2PropertyValue = ship2Data[property];
 
     row.cells[1].innerText = ship1PropertyValue;
-    row.cells[2].innerText = ship2ProperyValue;
+    row.cells[2].innerText = ship2PropertyValue;
     row.cells[1].classList.remove("win");
     row.cells[2].classList.remove("win");
 
     if (win) {
+        ship1PropertyValue = parseInt(ship1PropertyValue, 10);
+        ship2PropertyValue = parseInt(ship2PropertyValue, 10);
         // edge cases "unknown"
-        if (ship1PropertyValue === "unknown" || ship2ProperyValue === "unknown") {
+        if (ship1PropertyValue === "unknown" || ship2PropertyValue === "unknown") {
             // do nothing
-        } else if (ship1PropertyValue > ship2ProperyValue) {
+        } else if (ship1PropertyValue > ship2PropertyValue) {
             row.cells[1].classList.toggle("win");
-        } else if (ship2ProperyValue > ship1PropertyValue) {
+        } else if (ship2PropertyValue > ship1PropertyValue) {
             row.cells[2].classList.toggle("win");
         }
     }
