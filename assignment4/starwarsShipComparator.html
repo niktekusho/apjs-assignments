@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css" />
+    <title>Starwars Starships comparator</title>
+</head>
+
+<body>
+    <h1>Select two Starships from the dropdown lists to compare</h1>
+
+    <div class="center">
+        <select id="firstShipSelector">
+            <option value="2">CR90 Corvette</option>
+            <option value="75">V-wing</option>
+            <option value="74">Belbullab-22 Starfighter</option>
+            <option value="65">Jedi Interceptor</option>
+            <option value="3">Star Destroyer</option>
+            <option value="59">Trade Federation Cruiser</option>
+            <option value="58">Solar Sailer</option>
+            <option value="63">Republic Attack Cruiser</option>
+            <option value="28">A-wing</option>
+            <option value="29">B-wing</option>
+            <option value="39">Naboo Fighter</option>
+            <option value="10">Millenium Falcon</option>
+        </select>
+        <select id="secondShipSelector">
+                <option value="2">CR90 Corvette</option>
+                <option value="75">V-wing</option>
+                <option value="74">Belbullab-22 Starfighter</option>
+                <option value="65">Jedi Interceptor</option>
+                <option value="3">Star Destroyer</option>
+                <option value="59">Trade Federation Cruiser</option>
+                <option value="58">Solar Sailer</option>
+                <option value="63">Republic Attack Cruiser</option>
+                <option value="28">A-wing</option>
+                <option value="29">B-wing</option>
+                <option value="39">Naboo Fighter</option>
+                <option value="10">Millenium Falcon</option>
+        </select>
+        <button id="compare">Compare</button>
+    </div>
+
+    <table id="compareTable">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Starship 1</th>
+                <th>Starship 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="nameRow">
+                <td>Name</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="costRow">
+                <td>Cost</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="speedRow">
+                <td>Speed</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="cargoSizeRow">
+                <td>Cargo size</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="passengersRow">
+                <td>Passengers</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="starwarsShipComparator.js"></script>
+</body>
+
+</html>
